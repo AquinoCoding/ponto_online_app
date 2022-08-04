@@ -1,0 +1,30 @@
+{% extends "index.html" %}
+{% block content %}
+
+<form class="container" method="POST" action="/cadastrar-novo-usuario">
+    <br>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Nome</label>
+      <input class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="name">
+      <div id="emailHelp" class="form-text">Informar seu Nome</div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">CPF</label>
+      <input class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="cpf_id">
+      <div id="emailHelp" class="form-text">Informar seu CPF</div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Senha</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+      <div id="emailHelp" class="form-text">Informar senha</div>
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Senha</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" name="password2">
+        <div id="emailHelp" class="form-text">Confirmação de senha</div>
+      </div>
+
+    <button type="submit" class="btn btn-primary">Cadastrar</button>
+</form>
+
+{% endblock %}
