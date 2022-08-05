@@ -1,5 +1,5 @@
 from ponto_online_app import app
-from flask import request, redirect
+from flask import request, redirect, session, flash
 from ponto_online_app.models.user_model import *
 
 autenticacao = user()
@@ -10,13 +10,15 @@ def authenticate():
     
     if resposta in autenticacao:
         senha = request.form['password']
-        
-        print(resposta, senha)
+
         
         if senha == autenticacao[resposta][1]['password']:
+            session['usuario_logado'] = request.form['cpf_id']
+            flash('Usuário logado com sucesso.')
             return redirect('/')
         
         else:
+            flash('Usuário não encontrado.')
             return redirect('/login')
         
     else:
