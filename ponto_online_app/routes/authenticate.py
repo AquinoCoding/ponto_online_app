@@ -6,14 +6,13 @@ from flask import request, redirect, session, flash
 def authenticate():
     usuario = request.form['cpf_id']
     procurar = User.query.filter_by(username=usuario).first()
-    check_password = request.form['password'] == procurar.password
 
     if procurar is None:
         flash('Usuário ou senha incorretos')
         return redirect('/login')
 
     else:
-        if check_password == True:
+        if request.form['password'] == procurar.password:
             session['usuario_logado'] = request.form['cpf_id']
             flash('Usuário logado com sucesso.')
             return redirect('/')
