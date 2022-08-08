@@ -1,0 +1,30 @@
+{% extends "templates.html" %}
+{% block content %}
+
+<form class="container" method="POST" action="/cadastrar-novo-usuario">
+    <br>
+    <div class="mb-3">
+      <label for="name" class="form-label">Nome</label>
+      <input class="form-control" id="name" aria-describedby="emailHelp" name="name">
+      <div class="form-text">Informar seu Nome</div>
+    </div>
+    <div class="mb-3">
+      <label for="username" class="form-label">CPF</label>
+      <input class="form-control" id="username" aria-describedby="emailHelp" name="cpf_id">
+      <div class="form-text">Informar seu CPF</div>
+    </div>
+    <div class="mb-3">
+      <label for="new_email" class="form-label">E-mail</label>
+      <input type="email" class="form-control" id="new_email" name="new_email">
+      <div class="form-text">Informar senha</div>
+    </div>
+    <div class="mb-3">
+        <label for="add_password" class="form-label">Senha</label>
+        <input type="password" class="form-control" id="add_password" name="password">
+        <div class="form-text">Confirmação de senha</div>
+      </div>
+
+    <button type="submit" class="btn btn-primary">Cadastrar</button>
+</form>
+
+{% endblock %}
