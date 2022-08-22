@@ -37,9 +37,9 @@ def create_session() -> Session:
         create_engine(sqlite=True) 
         
     __session = sessionmaker(__engine, expire_on_commit=False, class_=Session)
-    session: Session = __session()
+    ession: Session = __session()
     
-    return session
+    return ession
 
 def create_tables() -> None:
     global __engine 
