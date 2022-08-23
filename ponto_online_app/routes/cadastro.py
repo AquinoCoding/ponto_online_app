@@ -12,23 +12,25 @@ def cadastro():
 
 @app.route("/cadastrar-novo-usuario", methods=["POST",])
 def cadastro_post():
-    
+
     name = request.form['name']
     cpf_id = request.form['cpf_id']
     email = request.form['new_email']
     password = request.form['password']
     level = 1
-    
-    if password != request.form['password2']:
-        flash('Senhas não iguais')
+
+    if "" == request.form['password2'] or password != request.form['password2']:
+        flash('Preencha o campo de senhas corretamente.')
         return redirect(url_for('cadastro'))
 
-    if AuthData.auth_cpf(cpf_id) is False:
-        flash('CPF inválido')
-        return redirect(url_for('cadastro'))
+    resposta1 = AuthData.auth_name(name)[0] is False
+    resposta2 = AuthData.auth_cpf(cpf_id)[0] is False
+    resposta3 = AuthData.auth_email(email)[0] is False
+    resposta4 = AuthData.auth_password(password)[0] is False
 
-    if AuthData.auth_email(email) is False:
-        flash('Email inválido')
+    if resposta1 or resposta2 or resposta3 or resposta4:
+        flash(AuthData.auth_name(name)[1] or AuthData.auth_cpf(cpf_id)[1] or
+              AuthData.auth_email(email)[1] or AuthData.auth_password(password)[1])
         return redirect(url_for('cadastro'))
 
     an: Users = Users(name=name, email=email, cpf_id=cpf_id, level=level, password=password)
