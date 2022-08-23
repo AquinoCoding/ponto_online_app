@@ -12,7 +12,7 @@ def authenticate():
     
     with create_session() as ession:
         find_acess = ession.query(Users).filter(Users.cpf_id == usuario).first()
-        print("--------------->", "->", find_acess)
+
         if find_acess is None:
             flash('CPF não encontrado')
             return redirect(url_for('login'))

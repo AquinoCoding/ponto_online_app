@@ -2,7 +2,7 @@ from ponto_online_app import app
 from flask import render_template, request
 
 @app.route('/ponto')
-def point():
+def point(user):
     return render_template("point.html")
 
 
