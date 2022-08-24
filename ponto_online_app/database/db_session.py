@@ -12,7 +12,6 @@ from ponto_online_app.models.model_base import ModelBase
 
 __engine: Optional[Engine] = None
 
-print('DB in execution')
 
 def create_engine(sqlite: bool = False) -> Engine:
     global __engine
@@ -37,9 +36,9 @@ def create_session() -> Session:
         create_engine(sqlite=True) 
         
     __session = sessionmaker(__engine, expire_on_commit=False, class_=Session)
-    ession: Session = __session()
+    session_db: Session = __session()
     
-    return ession
+    return session_db
 
 def create_tables() -> None:
     global __engine 

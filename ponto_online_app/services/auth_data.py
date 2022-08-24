@@ -16,7 +16,6 @@ class AuthData:
         mensagem_nome = "Nome inválido."
         return resultado, mensagem_nome
 
-
     @staticmethod
     def auth_cpf(cpf):
         registro = CPF()
@@ -60,4 +59,3 @@ class AuthData:
         resultado = False
         mensagem_password = "A senha precisa ter no mínimo 6 caracteres."
         return resultado, mensagem_password
-
