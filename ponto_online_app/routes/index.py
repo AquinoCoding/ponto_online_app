@@ -5,8 +5,7 @@ from flask import render_template, redirect, session, flash, url_for
 
 @app.route('/')
 def index():
-
-    if session['usuario_logado'] is None or 'usuario_logado' not in session:
+    if 'usuario_logado' not in session:
         flash('Faça o login primeiro')
         return redirect(url_for('login'))
 

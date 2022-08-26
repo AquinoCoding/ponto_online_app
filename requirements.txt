@@ -1,4 +1,5 @@
 attrs==21.4.0
+bcrypt==4.0.0
 CacheControl==0.12.11
 cached-property==1.5.2
 cachy==0.3.0
@@ -14,6 +15,7 @@ distlib==0.3.4
 dynaconf==3.1.8
 filelock==3.7.1
 Flask==2.1.2
+Flask-Bcrypt==1.0.1
 Flask-SQLAlchemy==2.5.1
 future==0.18.2
 geocoder==1.38.1
