@@ -1,9 +1,9 @@
 from ponto_online_app import app, bcrypt
-from flask import request, redirect, render_template, flash, url_for
+from flask import request, redirect, render_template, flash, url_for, session
 from ponto_online_app.models.users_model import Users
 from ponto_online_app.models.employees_model import Employees
 from ponto_online_app.services.bd_insert import insert_session
-from ponto_online_app.services.auth_data import AuthData
+from ponto_online_app.services.auth_data import AuthDataUsers, AuthDataEmployees
 from sqlalchemy.exc import IntegrityError
 from ponto_online_app.database.db_session import create_session
 
@@ -21,29 +21,22 @@ def cadastro_post():
         cnpj_id = request.form['cnpj_id']
         email = request.form['new_email']
         password = request.form['password']
+        password2 = request.form['password2']
         level = 1
 
-        if password != request.form['password2']:
-            flash('Preencha o campo de senhas corretamente.')
-            return redirect(url_for('cadastro'))
+        auth = AuthDataUsers(name, cnpj_id, email, password, password2).auth_users
 
-        resposta1 = AuthData.auth_name(name)[0] is False
-        resposta2 = AuthData.auth_cnpj(cnpj_id)[0] is False
-        resposta3 = AuthData.auth_email(email)[0] is False
-        resposta4 = AuthData.auth_password(password)[0] is False
+        if auth is True:
+            password = bcrypt.generate_password_hash(password)
 
-        if resposta1 or resposta2 or resposta3 or resposta4:
-            flash(AuthData.auth_name(name)[1] or AuthData.auth_cnpj(cnpj_id)[1] or
-                  AuthData.auth_email(email)[1] or AuthData.auth_password(password)[1])
-            return redirect(url_for('cadastro'))
+            an: Users = Users(name=name, email=email, cnpj_id=cnpj_id, level=level,
+                              password=password)
+            insert_session(an)
 
-        password = bcrypt.generate_password_hash(password)
+            return redirect(url_for('index'))
 
-        an: Users = Users(name=name, email=email, cnpj_id=cnpj_id, level=level,
-                          password=password)
-        insert_session(an)
-
-        return redirect(url_for('index'))
+        flash(auth)
+        return redirect(url_for('cadastro'))
 
     except IntegrityError:
         flash("CNPJ ou Email já estar cadastrado.")
@@ -62,21 +55,28 @@ def novo_funcionario_post():
         cpf_id = request.form['cpf_id_employees']
         email = request.form['new_email_employees']
         password = request.form['password_employees']
-        employees1 = request.form['employees']
+        password2 = request.form['password2_employees']
+        employees1 = session['usuario_logado']
         level = 1
 
-        with create_session() as session_db:
-            employees2 = session_db.query(Users).filter(Users.cnpj_id == employees1).first()
-            employees = employees2.id
+        auth = AuthDataEmployees(name, cpf_id, email, password, password2).auth_employees
 
-        password = bcrypt.generate_password_hash(password)
+        if auth is True:
+            with create_session() as session_db:
+                employees2 = session_db.query(Users).filter(Users.cnpj_id == employees1).first()
+                employees = employees2.id
 
-        an: Employees = Employees(name=name, email=email, cpf_id=cpf_id, level=level,
-                                  password=password, id_user=employees)
-        insert_session(an)
+            password = bcrypt.generate_password_hash(password)
 
-        return redirect(url_for('index'))
+            an: Employees = Employees(name=name, email=email, cpf_id=cpf_id, level=level,
+                                      password=password, id_user=employees)
+            insert_session(an)
+
+            return redirect(url_for('index'))
+
+        flash(auth)
+        return redirect(url_for('novo_funcionario_get'))
 
     except IntegrityError:
-        flash("CNPJ ou Email já estar cadastrado.")
-        return redirect(url_for('cadastro'))
+        flash("CPF ou Email já estar cadastrado.")
+        return redirect(url_for('novo_funcionario_get'))
