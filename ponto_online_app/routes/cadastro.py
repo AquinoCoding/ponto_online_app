@@ -1,9 +1,14 @@
 from ponto_online_app import app, bcrypt
 from flask import request, redirect, render_template, flash, url_for, session
+
+# models
 from ponto_online_app.models.users_model import Users
 from ponto_online_app.models.employees_model import Employees
+
+# services
 from ponto_online_app.services.bd_insert import insert_session
 from ponto_online_app.services.auth_data import AuthDataUsers, AuthDataEmployees
+
 from sqlalchemy.exc import IntegrityError
 from ponto_online_app.database.db_session import create_session
 
@@ -13,7 +18,7 @@ def cadastro():
     return render_template('cadastro.html')
 
 
-@app.route('/cadastrar-novo-usuario', methods=["POST",])
+@app.route('/cadastrar-novo-usuario', methods=["POST"])
 def cadastro_post():
 
     try:
@@ -48,7 +53,7 @@ def novo_funcionario_get():
     return render_template("cadastro_employees.html")
 
 
-@app.route('/cadastrar_novo_funcionario', methods=['POST',])
+@app.route('/cadastrar_novo_funcionario', methods=['POST'])
 def novo_funcionario_post():
     try:
         name = request.form['name_employees']

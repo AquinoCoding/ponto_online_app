@@ -109,8 +109,3 @@ def auth_password(password, password2):
 
     mensagem_password = "A senha precisa ter no mínimo 6 caracteres."
     return resultado, mensagem_password
-
-
-
-
-

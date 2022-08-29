@@ -5,7 +5,7 @@ from ponto_online_app.models.employees_model import Employees
 from ponto_online_app.database.db_session import create_session
 
 
-@app.route('/auth', methods=['POST',])
+@app.route('/auth', methods=['POST'])
 def authenticate():
     
     usuario = request.form['acess']
@@ -32,4 +32,5 @@ def authenticate():
             return redirect(url_for('login'))
 
         session['usuario_logado'] = usuario
+        session.permanent = True
         return redirect(url_for('index'))
