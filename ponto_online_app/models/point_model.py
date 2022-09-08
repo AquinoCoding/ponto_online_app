@@ -1,10 +1,9 @@
 import sqlalchemy as sa
 import sqlalchemy.orm as orm
 
-from datetime import datetime
+from datetime import datetime, date
 
 from .model_base import ModelBase
-from ponto_online_app.models.employees_model import Employees
 
 
 class Point(ModelBase):
@@ -13,8 +12,9 @@ class Point(ModelBase):
     id: int = sa.Column(sa.Integer, primary_key=True, autoincrement=True)
     creat_date: datetime = sa.Column(sa.DateTime, default=datetime.now, index=True)
 
-    id_employees: int = sa.Column(sa.Integer, sa.ForeignKey('employees.id'))
-    user: Employees = orm.relationship('Employees', lazy='joined')
+    cpf_user: str = sa.Column(sa.String(45), nullable=False)
+    date: datetime = sa.Column(sa.String(20), nullable=False)
+    time: datetime = sa.Column(sa.String(20), nullable=False)
 
     def __repr__(self) -> str:
         return f'<Point>'
