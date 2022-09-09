@@ -2,7 +2,6 @@ from ponto_online_app import app, bcrypt
 from flask import request, redirect, render_template, flash, url_for, session
 
 # models
-from ponto_online_app.models.users_model import Users
 from ponto_online_app.models.employees_model import Employees
 
 # services
@@ -29,14 +28,18 @@ def cadastro_post():
         password2 = request.form['password2']
         level = 1
 
-        auth = AuthDataUsers(name, cnpj_id, email, password, password2).auth_users
+        auth = AuthDataUsers(name=name, cnpj_id, email, password, password2).auth_users
+        
+        for dado in dados:
+            
+            if len(cnpj_id) > 10:
+                return 'CNPJ invalido'
+            if len(name)
+        
 
         if auth is True:
-            password = bcrypt.generate_password_hash(password)
 
-            an: Users = Users(name=name, email=email, cnpj_id=cnpj_id, level=level,
-                              password=password)
-            insert_session(an)
+            insert_session(name, email, cnpj_id, level, password)
 
             return redirect(url_for('index'))
 
