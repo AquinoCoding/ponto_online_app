@@ -42,6 +42,7 @@ pkginfo==1.8.2
 platformdirs==2.5.2
 poetry==1.1.13
 poetry-core==1.0.8
+psycopg2==2.9.3
 ptyprocess==0.7.0
 pybald-routes==2.11
 pycep-correios==5.0.0
@@ -60,7 +61,6 @@ six==1.16.0
 SQLAlchemy==1.4.37
 tomlkit==0.11.0
 urllib3==1.26.9
-validate-docbr==1.10.0
 virtualenv==20.14.1
 webencodings==0.5.1
 Werkzeug==2.1.2
