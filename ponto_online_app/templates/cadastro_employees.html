@@ -1,4 +1,4 @@
-{% extends "templates.html" %}
+{% extends "index.html" %}
 {% block content %}
 
 <form class="container" method="POST" action="/cadastrar_novo_funcionario">
@@ -11,7 +11,7 @@
     <div class="mb-3">
       <label for="username_employees" class="form-label">Cpf</label>
       <input class="form-control" id="username_employees" aria-describedby="emailHelp" name="cpf_id_employees">
-      <div class="form-text">Informar seu CNPJ</div>
+      <div class="form-text">Informar CPF</div>
     </div>
     <div class="mb-3">
       <label for="new_email_employees" class="form-label">E-mail</label>

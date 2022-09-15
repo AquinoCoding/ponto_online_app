@@ -24,7 +24,7 @@ def authenticate():
                 flash('Senha incorreta')
                 return redirect(url_for('login'))
 
-            session['usuario_logado'] = usuario
+            session['funcionario_logado'] = usuario
             return redirect(url_for('index'))
 
         elif bcrypt.check_password_hash(find_acess.password, password) is False:

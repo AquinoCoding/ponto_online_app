@@ -10,3 +10,4 @@ def conecta_db():
                          password='5f23bd64f3a214419e951e5c7d7ce9ead3775018c11bd0d8cc4346dd32ec36f9')
     return con
     conn_str = 'postgres://hzwtrwnbqzymjl:e9a295bd21d9fb38470a6effbd9171e3dd41b63c9aa75b72f45fd6d7af94555b@ec2-34-199-68-114.compute-1.amazonaws.com:5432/d9s9bd88052min'
+

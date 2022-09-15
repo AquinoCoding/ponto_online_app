@@ -9,13 +9,18 @@ from datetime import date, datetime
 
 @app.route('/ponto')
 def point():
+
+    if 'funcionario_logado' not in session:
+        flash('Entrada não autorizada')
+        return redirect(url_for('index'))
+
     return render_template("point.html")
 
 
 @app.route('/validation_point', methods=['POST'])
 def validation_point():
 
-    employees = session['usuario_logado']
+    employees = session['funcionario_logado']
 
     with create_session() as session_db:
         usuario1 = session_db.query(Employees).filter(Employees.cpf_id == employees).first()

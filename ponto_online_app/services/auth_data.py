@@ -1,3 +1,6 @@
+from ponto_online_app.database.db_session import create_session
+from ponto_online_app.models.users_model import Users
+from ponto_online_app.models.employees_model import Employees
 import re
 
 
@@ -7,10 +10,10 @@ def auth_name(name):
     res = regex_name.search(name)
 
     if res:
-        return True, None
+        return None
 
     mensagem = "Nome inválido."
-    return False, mensagem
+    return mensagem
 
 
 def auth_cpf(cpf):
@@ -18,9 +21,9 @@ def auth_cpf(cpf):
 
     if authe_cpf < 11 or authe_cpf > 16:
         mensagem = "CPF inválido."
-        return False, mensagem
+        return mensagem
 
-    return True, None
+    return None
 
 
 def auth_cnpj(cnpj):
@@ -28,18 +31,50 @@ def auth_cnpj(cnpj):
 
     if authe_cnpj < 14 or authe_cnpj > 20:
         mensagem = "CNPJ inválido."
-        return False, mensagem
+        return mensagem
 
-    return True, None
+    return None
 
 
-def auth_email(email):
+def auth_email(email: str):
     regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}([.]\w{2,3})?$'
-    resultado = True
 
-    if re.search(regex, str(email)):
-        return resultado, None
+    if re.search(regex, email):
+        return None
 
-    resultado = False
     mensagem = "Email inválido."
-    return resultado, mensagem
+    return mensagem
+
+
+def auth_existence_user(email: str, cnpj: str):
+    with create_session() as session_db:
+        consult_email = session_db.query(Users).filter(Users.email == email).first()
+
+        consult_cnpj = session_db.query(Users).filter(Users.cnpj_id == cnpj).first()
+
+    if consult_email is not None:
+        mensagem = 'Este email já estar cadastrado em nosso banco de dados.'
+        return mensagem
+
+    if consult_cnpj is not None:
+        mensagem = 'Este CNPJ já estar cadastrado em nosso banco de dados.'
+        return mensagem
+
+    return None
+
+
+def auth_existence_employees(email: str, cpf: str):
+    with create_session() as session_db:
+        consult_email = session_db.query(Employees).filter(Employees.email == email).first()
+
+        consult_cpf = session_db.query(Employees).filter(Employees.cpf_id == cpf).first()
+
+    if consult_email is not None:
+        mensagem = 'Este email já estar cadastrado em nosso banco de dados.'
+        return mensagem
+
+    if consult_cpf is not None:
+        mensagem = 'Este CPF já estar cadastrado em nosso banco de dados.'
+        return mensagem
+
+    return None

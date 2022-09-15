@@ -28,7 +28,8 @@ def create_engine(sqlite: bool = False) -> Engine:
         __engine = sa.create_engine(url=conn_str, echo=False, connect_args={"check_same_thread": False})
     
     return __engine
-        
+
+
 def create_session() -> Session:
     global __engine
     
@@ -40,6 +41,7 @@ def create_session() -> Session:
     
     return session_db
 
+
 def create_tables() -> None:
     global __engine 
     
@@ -49,4 +51,3 @@ def create_tables() -> None:
     import ponto_online_app.models.__all_models
     ModelBase.metadata.drop_all(__engine)
     ModelBase.metadata.create_all(__engine)
-    
