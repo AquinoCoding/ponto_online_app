@@ -1,10 +1,12 @@
-from ponto_online_app.database.db_session import create_session
-from ponto_online_app.models.users_model import Users
-from ponto_online_app.models.employees_model import Employees
 import re
 
+from ponto_online_app.database.db_session import create_session
 
-def auth_name(name):
+from ponto_online_app.models.users_model import Users
+from ponto_online_app.models.employees_model import Employees
+
+
+def auth_name(name: str):
     regex_name = re.compile(r'^([a-z]+)( [a-z]+)*( [a-z]+)*$', re.IGNORECASE)
 
     res = regex_name.search(name)
@@ -16,7 +18,7 @@ def auth_name(name):
     return mensagem
 
 
-def auth_cpf(cpf):
+def auth_cpf(cpf: str):
     authe_cpf = len(cpf)
 
     if authe_cpf < 11 or authe_cpf > 16:
@@ -26,7 +28,7 @@ def auth_cpf(cpf):
     return None
 
 
-def auth_cnpj(cnpj):
+def auth_cnpj(cnpj: str):
     authe_cnpj = len(cnpj)
 
     if authe_cnpj < 14 or authe_cnpj > 20:

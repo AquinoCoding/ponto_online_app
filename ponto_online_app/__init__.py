@@ -8,7 +8,7 @@ from datetime import timedelta
 from os import getenv
 
 app = Flask(__name__)
-# db = create_tables()
+db = create_tables()
 bcrypt = Bcrypt(app)
 
 app.permanent_session_lifetime = timedelta(hours=3)

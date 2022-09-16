@@ -19,14 +19,17 @@ def create_engine(sqlite: bool = False) -> Engine:
     if __engine:
         return
     
-    if sqlite:
-        arquivo_db = 'db/pontoonlineapp.sqlite'
-        folder = Path(arquivo_db).parent
-        folder.mkdir(parents=True, exist_ok=True)
-        
-        conn_str = f'sqlite:///{arquivo_db}'
-        __engine = sa.create_engine(url=conn_str, echo=False, connect_args={"check_same_thread": False})
-    
+    # if sqlite:
+    #     arquivo_db = 'db/pontoonlineapp.sqlite'
+    #     folder = Path(arquivo_db).parent
+    #     folder.mkdir(parents=True, exist_ok=True)
+    #
+    #     conn_str = f'sqlite:///{arquivo_db}'
+    #     __engine = sa.create_engine(url=conn_str, echo=False, connect_args={"check_same_thread": False})
+
+    conn_str = 'postgresql://hzwtrwnbqzymjl:e9a295bd21d9fb38470a6effbd9171e3dd41b63c9aa75b72f45fd6d7af94555b@ec2-34-199-68-114.compute-1.amazonaws.com:5432/d9s9bd88052min'
+    __engine = sa.create_engine(url=conn_str, echo=False)
+
     return __engine
 
 
