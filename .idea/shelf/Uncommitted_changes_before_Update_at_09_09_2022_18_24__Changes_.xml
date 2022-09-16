@@ -1,0 +1,14 @@
+<changelist name="Uncommitted_changes_before_Update_at_09_09_2022_18_24_[Changes]" date="1662758702194" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09_09_2022_18_24_[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 09/09/2022 18:24 [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="db/pontoonlineapp.sqlite" />
+    <option name="AFTER_PATH" value="db/pontoonlineapp.sqlite" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09_09_2022_18_24_[Changes]/pontoonlineapp.sqlite" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="ponto_online_app/services/db/pontoonlineapp.sqlite" />
+    <option name="AFTER_PATH" value="ponto_online_app/services/db/pontoonlineapp.sqlite" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09_09_2022_18_24_[Changes]/pontoonlineapp1.sqlite" />
+  </binary>
+</changelist>

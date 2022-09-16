@@ -14,7 +14,7 @@ class Point(ModelBase):
 
     cpf_user: str = sa.Column(sa.String(45), nullable=False)
     date: datetime = sa.Column(sa.String(20), nullable=False)
-    time: datetime = sa.Column(sa.String(20), nullable=False)
+    time: datetime = sa.Column(sa.DateTime, default=datetime.now, index=True)
 
     def __repr__(self) -> str:
         return f'<Point>'

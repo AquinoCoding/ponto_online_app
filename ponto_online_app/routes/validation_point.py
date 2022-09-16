@@ -32,9 +32,9 @@ def validation_point():
             usuario = usuario1.cpf_id """
             
 
-    time_formatacao = datetime.now().strftime('%H:%M:%S')
+    print(str(date.today()))
     
-    insert_point('admin', str(date.today()), time_formatacao)
+    insert_point('admin', str(date.today()))
 
     flash(f'Ponto batido com sucesso. ({date_time()})')
     return redirect(url_for('index'))

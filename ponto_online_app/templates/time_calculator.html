@@ -1,0 +1,13 @@
+{% extends "index.html" %}
+{% block content %}
+
+<form class="container" method="POST" action="{{ url_for('full_time') }}">
+    <br>
+    <div class="mb-3">
+      <label for="date_employees" class="form-label">Nome</label>
+      <input type="date" class="form-control" id="date_employees" name="date">
+    </div>
+    <button type="submit" class="btn btn-primary">Consultar</button>
+</form>
+
+{% endblock %}

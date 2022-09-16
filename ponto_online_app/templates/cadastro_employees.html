@@ -1,7 +1,7 @@
 {% extends "index.html" %}
 {% block content %}
 
-<form class="container" method="POST" action="/cadastrar_novo_funcionario">
+<form class="container" method="POST" action="{{ url_for('novo_funcionario_post') }}">
     <br>
     <div class="mb-3">
       <label for="name_employees" class="form-label">Nome</label>

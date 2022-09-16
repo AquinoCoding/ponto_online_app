@@ -4,6 +4,7 @@ from datetime import datetime
 
 from .model_base import ModelBase
 
+
 class Users(ModelBase):
     __tablename__: str = 'users'
     

@@ -8,17 +8,17 @@ from ponto_online_app.database.db_session import create_session
 from ponto_online_app.models.users_model import Users
 
 
-@app.route('/cadastrar_funcionario')
+@app.route('/cadastrar-funcionario')
 def novo_funcionario_get():
 
-    if 'usuario_logado' not in session:
-        flash('Entrada não autorizada.')
-        return redirect(url_for('index'))
+    # if 'usuario_logado' not in session:
+    #     flash('Entrada não autorizada.')
+    #     return redirect(url_for('index'))
 
     return render_template("cadastro_employees.html")
 
 
-@app.route('/cadastrar_novo_funcionario', methods=['POST'])
+@app.route('/cadastrar-novo-funcionario', methods=['POST'])
 def novo_funcionario_post():
 
     name = request.form['name_employees']
@@ -26,7 +26,7 @@ def novo_funcionario_post():
     email = request.form['new_email_employees']
     password = request.form['password_employees']
     password2 = request.form['password2_employees']
-    employees1 = session['usuario_logado']
+    # employees1 = session['usuario_logado']
     level = 1
 
     if password != password2:
@@ -37,9 +37,9 @@ def novo_funcionario_post():
         flash('A senha precisa ter no mínimo 6 caracteres.')
         return redirect(url_for('novo_funcionario_get'))
 
-    with create_session() as session_db:
-        employees2 = session_db.query(Users).filter(Users.cnpj_id == employees1).first()
-        employees = employees2.id
+    # with create_session() as session_db:
+    #     employees2 = session_db.query(Users).filter(Users.cnpj_id == employees1).first()
+    #     employees = employees2.id
 
     authe_name = auth_name(name)
     authe_cpf = auth_cpf(cpf_id)

@@ -30,9 +30,9 @@ def insert_session_employees(name, email, cpf_id, level, password, employees):
         session.commit()
 
 
-def insert_point(cpf_user: str, date: str, time: str):
+def insert_point(cpf_user: str, date: str):
 
-    points: Point = Point(cpf_user=cpf_user, date=date, time=time)
+    points: Point = Point(cpf_user=cpf_user, date=date)
 
     with create_session() as session:
         session.add(points)
