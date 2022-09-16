@@ -1,9 +1,17 @@
 {% extends "index.html" %}
 {% block content %}
+<br><br>
 <br>
-<form class="container" method="POST" action="/validation_point">
+<br>
+
+<style>
+  body {
+    text-align: center;
+  }
+</style>
+<form class="container" method="POST" action="{{ url_for('validation_point') }}" >
     <div class="mb-3">
-      <button type="submit" class="btn btn-primary" name="ponto">Bater ponto!!</button>
+      <button type="submit" class="btn btn-primary" name="ponto" value="Deu">Bater ponto!!</button>
       <div id="emailHelp" class="form-text">Bata seu ponto aqui.</div>
     </div>
 </form>

@@ -1,16 +1,19 @@
+# libs
 import re
 
+# db
 from ponto_online_app.database.db_session import create_session
 
+# models
 from ponto_online_app.models.users_model import Users
 from ponto_online_app.models.employees_model import Employees
 
 
 def auth_name(name: str):
+    
     regex_name = re.compile(r'^([a-z]+)( [a-z]+)*( [a-z]+)*$', re.IGNORECASE)
-
     res = regex_name.search(name)
-
+    
     if res:
         return None
 
@@ -66,10 +69,13 @@ def auth_existence_user(email: str, cnpj: str):
 
 
 def auth_existence_employees(email: str, cpf: str):
+    
     with create_session() as session_db:
         consult_email = session_db.query(Employees).filter(Employees.email == email).first()
 
         consult_cpf = session_db.query(Employees).filter(Employees.cpf_id == cpf).first()
+        
+        
 
     if consult_email is not None:
         mensagem = 'Este email já estar cadastrado em nosso banco de dados.'
