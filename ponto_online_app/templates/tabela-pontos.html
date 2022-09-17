@@ -1,0 +1,38 @@
+{% extends "index.html" %}
+{% block content %}
+
+<style>
+    img {
+        width: 25px;
+        height: 25px;
+        object-fit: fill;
+    }
+</style>
+
+<br>
+<div class="card text-center">
+
+    <div class="card-header">
+        <div class="table-responsive">
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Pontos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in itens %}
+                    <tr>
+                        <td>{{ item }}</td>
+                    </tr>
+                    {% endfor %}
+                    <td><strong>{{ hora_extra }}</strong></td>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <br><br>
+</div>
+{% endblock %}

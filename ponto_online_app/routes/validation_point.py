@@ -10,10 +10,15 @@ from ponto_online_app.database.db_session import create_session
 
 from ponto_online_app.models.employees_model import Employees
 
+from ponto_online_app.services.bd_read import read_all_point
+
 
 
 @app.route('/ponto')
 def point():
+        
+    obj = read_all_point('luiz')
+    print(obj)
 
     """     if 'funcionario_logado' not in session:
             flash('Entrada não autorizada')

@@ -1,18 +1,19 @@
 from datetime import timedelta
 
-from ponto_online_app.services.bd_read import read_point
+from ponto_online_app.services.bd_read import read_point, read_all_point
 
+from datetime import datetime
 
-def calculator(cpf: str, date: str):
+def calculator(cpf: str):
 
-    find_acess_time = read_point(cpf, date)
+    find_acess_time = read_all_point(cpf)
 
     horaSum = timedelta(hours=0, minutes=0, seconds=0, microseconds=0)
     horas = []
 
     quantidade = len(find_acess_time)
 
-    if quantidade == 1:
+    if quantidade <= 1:
         mensagem = 'Não há pontos suficientes para ser contabilizado o tempo trabalhado.'
         return mensagem
 
@@ -21,21 +22,17 @@ def calculator(cpf: str, date: str):
 
     for i in range(1, quantidade, 2):
 
-        ind = i - 1
-        calculo1 = find_acess_time[ind]
+        calculo1 = find_acess_time[i-1]
         calculo2 = find_acess_time[i]
-
-        resultado = calculo2 - calculo1
-        horas.append(resultado)
-
-        horasLen = len(horas)
-
-        if i == quantidade - 1:
-            for indice in range(horasLen):
+        
+        horas.append(calculo2 - calculo1)
+        
+        if i == (quantidade - 1):
+            for indice in range(len(horas)):
                 horaSum += horas[indice]
+                
+        horaSum = str(horaSum)
 
-    mensagem = f'Você tem {horaSum} horas trabalhadas'
-
-    return mensagem
+    return horaSum
 
 # insert_point("0", "2022-09-09", "14:30:00")

@@ -6,11 +6,15 @@ from ponto_online_app.models.users_model import Users
 from ponto_online_app.models.employees_model import Employees
 
 
-def read_user_session(email: str):
+def read_users_session():
 
     with create_session() as session_db:
-        users = session_db.query(Users).filter(Users.email == email)
-        return [users]
+        users = session_db.query(Users)
+        return [{"id": an.id, "data_criacao": an.creat_date,
+                 "name": an.name, "email": an.email,
+                 "cnpj_id": an.cnpj_id, "level": an.level} 
+                            
+                                        for an in users]
 
 
 def read_user_single_session(email: str):
@@ -47,5 +51,15 @@ def read_point(cpf: str, date: str):
         find_acess = session_db.query(Point).filter(Point.cpf_user == cpf).filter(Point.date == date).all()
 
     find_acess_time = [consulta.time for consulta in find_acess]
+
+    return find_acess_time
+
+def read_all_point(cpf: str):
+
+    with create_session() as session_db:
+        pontos_batidos = session_db.query(Point).filter(Point.cpf_user == cpf)
+
+    find_acess_time = [an.time 
+                            for an in pontos_batidos]
 
     return find_acess_time
