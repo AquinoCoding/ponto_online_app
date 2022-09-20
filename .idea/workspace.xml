@@ -5,11 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a586ccdf-c0e9-4725-9da5-9821d9550fec" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09_09_2022_18_24_[Changes]/pontoonlineapp.sqlite" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09_09_2022_18_24_[Changes]/pontoonlineapp1.sqlite" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09_09_2022_18_24_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09_09_2022_18_24__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ponto_online_app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/ponto_online_app/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ponto_online_app/all_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/ponto_online_app/all_routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ponto_online_app/models/employees_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/ponto_online_app/models/employees_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ponto_online_app/models/point_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/ponto_online_app/models/point_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ponto_online_app/models/users_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/ponto_online_app/models/users_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ponto_online_app/routes/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/ponto_online_app/routes/auth.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ponto_online_app/routes/cadastro.py" beforeDir="false" afterPath="$PROJECT_DIR$/ponto_online_app/routes/cadastro.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ponto_online_app/routes/cadastro_employees.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ponto_online_app/routes/calculator.py" beforeDir="false" afterPath="$PROJECT_DIR$/ponto_online_app/routes/calculator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ponto_online_app/routes/index.py" beforeDir="false" afterPath="$PROJECT_DIR$/ponto_online_app/routes/index.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ponto_online_app/routes/validation_point.py" beforeDir="false" afterPath="$PROJECT_DIR$/ponto_online_app/routes/point.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ponto_online_app/services/bd_insert.py" beforeDir="false" afterPath="$PROJECT_DIR$/ponto_online_app/services/bd_insert.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ponto_online_app/services/bd_read.py" beforeDir="false" afterPath="$PROJECT_DIR$/ponto_online_app/services/bd_read.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ponto_online_app/templates/cadastro.html" beforeDir="false" afterPath="$PROJECT_DIR$/ponto_online_app/templates/cadastro.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ponto_online_app/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/ponto_online_app/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ponto_online_app/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/ponto_online_app/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ponto_online_app/services/time_calculator.py" beforeDir="false" afterPath="$PROJECT_DIR$/ponto_online_app/services/time_calculator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

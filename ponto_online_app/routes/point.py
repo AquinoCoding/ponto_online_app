@@ -10,36 +10,30 @@ from ponto_online_app.database.db_session import create_session
 
 from ponto_online_app.models.employees_model import Employees
 
-from ponto_online_app.services.bd_read import read_all_point
-
+from ponto_online_app.services.bd_read import read_all_point_email
 
 
 @app.route('/ponto')
 def point():
-        
-    obj = read_all_point('luiz')
-    print(obj)
 
-    """     if 'funcionario_logado' not in session:
-            flash('Entrada não autorizada')
-            return redirect(url_for('index'))
-    """
+    if 'funcionario_logado' not in session:
+        flash('Entrada não autorizada')
+        return redirect(url_for('index'))
+
     return render_template("point.html")
 
 
 @app.route('/validation-point', methods=['POST'])
 def validation_point():
 
-    #employees = session['funcionario_logado']
+    employees = session['funcionario_logado']
 
-    """     with create_session() as session_db:
-            usuario1 = session_db.query(Employees).filter(Employees.cpf_id == employees).first()
-            usuario = usuario1.cpf_id """
-            
+    with create_session() as session_db:
+        usuario1 = session_db.query(Employees).filter(Employees.email == employees).first()
+        print(employees, usuario1)
+        usuario: str = usuario1.email
 
-    print(str(date.today()))
-    
-    insert_point('admin', str(date.today()))
+    insert_point(usuario, str(date.today()))
 
     flash(f'Ponto batido com sucesso. ({date_time()})')
     return redirect(url_for('index'))

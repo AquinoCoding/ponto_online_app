@@ -18,7 +18,7 @@ class Employees(ModelBase):
     cpf_id: str = sa.Column(sa.String(45), unique=True, nullable=False)
 
     level: int = sa.Column(sa.Integer, nullable=False)
-    password: str = sa.Column(sa.String(45), nullable=False)
+    password: str = sa.Column(sa.LargeBinary, nullable=False)
 
     id_user: int = sa.Column(sa.Integer, sa.ForeignKey('users.id'))
     user: Users = orm.relationship('Users', lazy='joined')

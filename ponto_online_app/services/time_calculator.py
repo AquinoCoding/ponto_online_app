@@ -1,12 +1,11 @@
 from datetime import timedelta
 
-from ponto_online_app.services.bd_read import read_point, read_all_point
+from ponto_online_app.services.bd_read import read_all_point_email
 
-from datetime import datetime
 
-def calculator(cpf: str):
+def calculator(email: str):
 
-    find_acess_time = read_all_point(cpf)
+    find_acess_time = read_all_point_email(email)
 
     horaSum = timedelta(hours=0, minutes=0, seconds=0, microseconds=0)
     horas = []
@@ -31,8 +30,8 @@ def calculator(cpf: str):
             for indice in range(len(horas)):
                 horaSum += horas[indice]
                 
-        horaSum = str(horaSum)
+    resultado = str(horaSum)
 
-    return horaSum
+    return resultado
 
 # insert_point("0", "2022-09-09", "14:30:00")

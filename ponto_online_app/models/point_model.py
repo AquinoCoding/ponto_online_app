@@ -12,7 +12,7 @@ class Point(ModelBase):
     id: int = sa.Column(sa.Integer, primary_key=True, autoincrement=True)
     creat_date: datetime = sa.Column(sa.DateTime, default=datetime.now, index=True)
 
-    cpf_user: str = sa.Column(sa.String(45), nullable=False)
+    email_user: str = sa.Column(sa.String(45), nullable=False)
     date: datetime = sa.Column(sa.String(20), nullable=False)
     time: datetime = sa.Column(sa.DateTime, default=datetime.now, index=True)
 

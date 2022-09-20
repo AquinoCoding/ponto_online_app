@@ -16,7 +16,7 @@ class Users(ModelBase):
     cnpj_id: str = sa.Column(sa.String(45), unique=True, nullable=False)
     
     level: int = sa.Column(sa.Integer, nullable=False)
-    password: str = sa.Column(sa.String(250), nullable=False)
+    password: str = sa.Column(sa.LargeBinary, nullable=False)
     
     def __repr__(self) -> str:
         return f'<Users>'

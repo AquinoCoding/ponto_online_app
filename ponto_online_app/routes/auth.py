@@ -13,19 +13,19 @@ def authenticate():
     find_acess_user = read_user_single_session(usuario)
     find_acess_employees = read_employees_single_session(usuario)
 
-    if find_acess_user[0] is None:
+    if find_acess_user is None:
         if find_acess_employees is None:
             flash('Usuário não encontrado')
             return redirect(url_for('login'))
 
-        elif bcrypt.check_password_hash(find_acess_employees[1], password) is False:
+        elif bcrypt.check_password_hash(find_acess_employees["password"], password) is False:
             flash('Senha incorreta')
             return redirect(url_for('login'))
 
         session['funcionario_logado'] = usuario
         return redirect(url_for('index'))
 
-    elif bcrypt.check_password_hash(find_acess_user[1], password) is False:
+    elif bcrypt.check_password_hash(find_acess_user["password"], password) is False:
         flash('Senha incorreta')
         return redirect(url_for('login'))
 

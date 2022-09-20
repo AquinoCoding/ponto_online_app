@@ -12,18 +12,19 @@ def read_users_session():
         users = session_db.query(Users)
         return [{"id": an.id, "data_criacao": an.creat_date,
                  "name": an.name, "email": an.email,
-                 "cnpj_id": an.cnpj_id, "level": an.level} 
-                            
-                                        for an in users]
+                 "cnpj_id": an.cnpj_id, "level": an.level}
+                for an in users]
 
 
 def read_user_single_session(email: str):
 
     with create_session() as session_db:
         user = session_db.query(Users).filter(Users.email == email).first()
-        password_user = user.password
+
+    if user is None:
+        return user
         
-        return user, password_user
+    return {"id": user.id, "user": user, "password": user.password}
 
 
 def read_employees_session(email: str):
@@ -38,28 +39,28 @@ def read_employees_single_session(email: str):
     with create_session() as session_db:
         employees = session_db.query(Employees).filter(Employees.email == email).first()
 
-        password_employees = employees.password
+    if employees is None:
+        return employees
 
-        return employees, password_employees
+    print({"employees": employees, "password": employees.password})
+    return {"employees": employees, "password": employees.password}
 
-# find_acess_employees = session_db.query(Employees).filter(Employees.cpf_id == usuario).first()
 
-
-def read_point(cpf: str, date: str):
+def read_point(email: str, date: str):
 
     with create_session() as session_db:
-        find_acess = session_db.query(Point).filter(Point.cpf_user == cpf).filter(Point.date == date).all()
+        find_acess = session_db.query(Point).filter(Point.cpf_user == email).filter(Point.date == date).all()
 
     find_acess_time = [consulta.time for consulta in find_acess]
 
     return find_acess_time
 
-def read_all_point(cpf: str):
+
+def read_all_point_email(email: str):
 
     with create_session() as session_db:
-        pontos_batidos = session_db.query(Point).filter(Point.cpf_user == cpf)
+        pontos_batidos = session_db.query(Point).filter(Point.email_user == email)
 
-    find_acess_time = [an.time 
-                            for an in pontos_batidos]
+    find_acess_time = [an.time for an in pontos_batidos]
 
     return find_acess_time
