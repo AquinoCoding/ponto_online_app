@@ -6,6 +6,8 @@ from ponto_online_app.models.point_model import Point
 from ponto_online_app.models.users_model import Users
 from ponto_online_app.models.employees_model import Employees
 
+from datetime import timedelta
+
 
 def insert_session_users(name: str, email: str, cnpj_id: str, level: int, password: str):
     
@@ -19,11 +21,13 @@ def insert_session_users(name: str, email: str, cnpj_id: str, level: int, passwo
         session.commit()
 
 
-def insert_session_employees(name, email, cpf_id, level, password, employees):
-    password = bcrypt.generate_password_hash(password)
+def insert_session_employees(name, email, cpf_id, hours_per_week, level, password, employees):
 
-    an: Employees = Employees(name=name, email=email, cpf_id=cpf_id, level=level,
-                              password=password, id_user=employees)
+    password = bcrypt.generate_password_hash(password)
+    extra_hour = timedelta(hours=0, minutes=0, seconds=0, microseconds=0)
+
+    an: Employees = Employees(name=name, email=email, cpf_id=cpf_id, hours_per_week=hours_per_week, 
+                              extra_hour=extra_hour,level=level, password=password, id_user=employees)
 
     with create_session() as session:
         session.add(an)

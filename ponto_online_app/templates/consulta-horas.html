@@ -1,0 +1,24 @@
+{% extends "index.html" %}
+{% block content %}
+<form class="container" method="POST" action="{{ url_for('consult_hours') }}">
+    <br>
+    <div class="mb-3">
+      <label for="name" class="form-label">Horas trabalhadas no dia:</label>
+      <input type="date" class="form-control" id="hours_day" aria-describedby="emailHelp" name="hours_day">
+      <div class="form-text">{{ resultado_dia }}</div>
+    </div>
+    <br>
+    <div class="mb-3">
+      <label for="username" class="form-label">Horas extras:</label>
+      <div class="form-text">{{ resultado_hora_extra }}</div>
+    </div>
+    <br>
+    <div class="mb-3">
+      <label for="hours_month" class="form-label">Horas trabalhadas no mês:</label>
+      <input type="month" class="form-control" id="hours-month" aria-describedby="emailHelp" name="hours_month">
+      <div class="form-text">{{ resultado_mes }}</div>
+    </div>
+    <button type="submit" class="btn btn-primary">Consultar</button>
+</form>
+
+{% endblock %}

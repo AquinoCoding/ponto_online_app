@@ -1,7 +1,7 @@
 import sqlalchemy as sa
 import sqlalchemy.orm as orm
 
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from .model_base import ModelBase
 from ponto_online_app.models.users_model import Users
@@ -16,6 +16,8 @@ class Employees(ModelBase):
     name: str = sa.Column(sa.String(45), nullable=False)
     email: str = sa.Column(sa.String(45), unique=True, nullable=False)
     cpf_id: str = sa.Column(sa.String(45), unique=True, nullable=False)
+    hours_per_week: str = sa.Column(sa.String(45), nullable=False)
+    extra_hour: timedelta =sa.Column(sa.Interval(100), nullable=False)
 
     level: int = sa.Column(sa.Integer, nullable=False)
     password: str = sa.Column(sa.LargeBinary, nullable=False)

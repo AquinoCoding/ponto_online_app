@@ -65,7 +65,16 @@ def novo_funcionario_post():
     password = request.form['password_employees']
     password2 = request.form['password2_employees']
     id_user = read_user_single_session(session['usuario_logado'])["id"]
+    domingo = request.form['domingo']
+    segunda = request.form['segunda']
+    terca = request.form['terca']
+    quarta = request.form['quarta']
+    quinta = request.form['quinta']
+    sexta = request.form['sexta']
+    sabado = request.form['sabado']
     level = 1
+
+    horas_semana = domingo + segunda + terca + quarta + quinta + sexta + sabado
 
     if password != password2:
         flash('Preencha o campo de senhas corretamente.')
@@ -85,6 +94,6 @@ def novo_funcionario_post():
         flash(authe_name or authe_cpf or authe_email or authe_employees)
         return redirect(url_for('novo_funcionario_get'))
 
-    insert_session_employees(name, email, cpf_id, level, password, id_user)
+    insert_session_employees(name, email, cpf_id, horas_semana, level, password, id_user)
 
     return redirect(url_for('index'))

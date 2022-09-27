@@ -6,3 +6,9 @@ def date_time():
     formatacao = time.strftime('Dia:%d/%m/%Y Horas:%H:%M')
 
     return formatacao
+
+
+def ponto_formatado(time) -> str:
+    formatacao: str = time.strftime('Dia:%d/%m/%Y Horas:%H:%M')
+
+    return formatacao
